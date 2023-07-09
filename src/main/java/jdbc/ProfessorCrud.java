@@ -35,7 +35,7 @@ public class ProfessorCrud {
     }
     public void update(Professor professor){
         try {
-            String sql = "UPDATE tab_professor SET nome = ?, dataNascimento = ?, cargaHoraria = ?, valorHora = ?, estrangeiro = ?, horasDisponiveis = ?, biografia = ?, dataHoraCadastro = ? WHERE id = ?";
+            String sql = "UPDATE tab_professor SET nome = ?, dataNascimento = ?, cargaHoraria = ?, valorHora = ?, estrangeiro = ?, horasDisponiveis = ?, biografia = ? WHERE id = ?";
 
             PreparedStatement statement = conexao.prepareStatement(sql);
             statement.setString(1, professor.getNome());
@@ -45,8 +45,7 @@ public class ProfessorCrud {
             statement.setBoolean(5, professor.isEstrangeiro());
             statement.setInt(6, professor.getHorasDisponiveis());
             statement.setString(7, professor.getBiografia());
-            statement.setDate(8, new java.sql.Date(professor.getDataHoraCadastro().getTime()));
-            statement.setInt(9, professor.getId());
+            statement.setInt(8, professor.getId());
             int rowsUpdated = statement.executeUpdate();
             if (rowsUpdated > 0) {
                 System.out.println("Professor alterado com sucesso!");

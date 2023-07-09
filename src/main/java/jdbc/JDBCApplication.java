@@ -9,9 +9,9 @@ public class JDBCApplication {
         FabricaoConexao.iniciarConexao();
         professorCrud = new ProfessorCrud();
         //incluirProfessor();
-        //alterarProfessor();
+        alterarProfessor();
         //listarProfessores();
-        mostrarProfessor();
+        //mostrarProfessor();
         //excluirProfessor();
     }
     //pensem que estes métodos poderiam ações de seu sistema
@@ -29,16 +29,15 @@ public class JDBCApplication {
         professorCrud.save(professor);
     }
     private static void alterarProfessor(){
-        Professor professor  = professorCrud.findById(1);
+        Professor professor  = professorCrud.findById(3);
         if(professor!=null){
-            professor.setNome("Rodddd");
-            professor.setDataNascimento("2003-08-05");
+            professor.setNome("Teste");
+            professor.setDataNascimento("2003-06-05");
             professor.setCargaHoraria(40);
             professor.setValorHora(8.0);
             professor.setEstrangeiro(true);
             professor.setHorasDisponiveis(10);
             professor.setBiografia("Apaixonando por tecnologia");
-            professor.setDataHoraCadastro(new Date());
             professorCrud.update(professor);
         }else {
             System.out.println("Não existe a professor com o id informado");
